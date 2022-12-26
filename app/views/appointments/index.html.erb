@@ -1,0 +1,33 @@
+<h1>My Appointments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Duration</th>
+      <th>Location</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.start_time.strftime("%I:%M %p") %></td>
+        <td><%= appointment.end_time.strftime("%I:%M %p") %></td>
+        <td><%= appointment.duration %> minutes</td>
+        <td><%= appointment.location %></td>
+        <td>
+          <%= link_to "Show", appointment %>
+          <%= link_to "Edit", edit_appointment_path(appointment) %>
+          <%= link_to "Delete", appointment, method: :delete, data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "New Appointment", new_appointment_path %>

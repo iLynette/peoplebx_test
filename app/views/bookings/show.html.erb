@@ -1,0 +1,21 @@
+<h1>Booking</h1>
+
+<p>
+  <strong>Appointment:</strong>
+  <%= link_to @booking.appointment.title, @booking.appointment %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @booking.start_time.strftime("%I:%M %p") %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= @booking.end_time.strftime("%I:%M %p") %>
+</p>
+
+<br>
+
+<%= link_to "Edit", edit_booking_path(@booking) %> |
+<%= link_to "Back", bookings_path %>

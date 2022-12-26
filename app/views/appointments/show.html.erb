@@ -1,0 +1,59 @@
+<h1>Appointment</h1>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @appointment.start_time.strftime("%I:%M %p") %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= @appointment.end_time.strftime("%I:%M %p") %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @appointment.duration %> minutes
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @appointment.location %>
+</p>
+
+<br>
+
+<%= link_to "Edit", edit_appointment_path(@appointment) %> |
+<%= link_to "Back", appointments_path %>
+
+<br>
+<br>
+
+<% if @appointment.bookings.empty? %>
+  <%= link_to "Book Appointment", new_appointment_path(appointment_id: @appointment.id) %>
+<% else %>
+  <h2>Bookings</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @appointment.bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.user.email %></td>
+          <td><%= booking.start_time.strftime("%I:%M %p") %></td>
+          <td><%= booking.end_time.strftime("%I:%M %p") %></td>
+          <td>
+            <%= link_to "Cancel", booking, method: :delete, data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

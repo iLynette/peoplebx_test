@@ -1,0 +1,21 @@
+<%= form_with model: @appointment, url: appointment_path(@appointment), method: :patch do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :start_time %>
+  <%= form.time_select :start_time %>
+
+  <%= form.label :end_time %>
+  <%= form.time_select :end_time %>
+
+  <%= form.label :location %>
+  <%= form.text_field :location %>
+
+  <%= form.label :duration %>
+  <%= form.number_field :duration %>
+
+  <%= form.label :user %>
+  <%= form.collection_select :user_id, User.all, :id, :email %>
+
+  <%= form.submit %>
+<% end %>

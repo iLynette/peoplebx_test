@@ -16,7 +16,9 @@ class BookingsController < ApplicationController
     end
   
     def edit
+      @booking = Booking.find(params[:id])
     end
+    
   
     def create
       @booking = current_user.bookings.build(booking_params)

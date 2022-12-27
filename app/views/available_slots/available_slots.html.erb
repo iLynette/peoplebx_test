@@ -1,0 +1,22 @@
+<h1>Available slots for <%= @date.strftime("%B %d, %Y") %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Duration</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.start_time.strftime("%I:%M %p") %></td>
+        <td><%= appointment.end_time.strftime("%I:%M %p") %></td>
+        <td><%= appointment.duration %> minutes</td>
+        <td><%= appointment.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

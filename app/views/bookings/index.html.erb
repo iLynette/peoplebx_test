@@ -14,8 +14,8 @@
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= link_to booking.appointment.title, booking.appointment %></td>
-        <td><%= booking.start_time.strftime("%I:%M %p") %></td>
-        <td><%= booking.end_time.strftime("%I:%M %p") %></td>
+        <td><%= booking.start_time.strftime("%m/%d/%Y%I:%M %p") %></td>
+        <td><%= booking.end_time.strftime("%m/%d/%Y%I:%M %p") %></td>
         <td>
           <%= link_to "Cancel", booking, method: :delete, data: { confirm: "Are you sure?" } %>
         </td>

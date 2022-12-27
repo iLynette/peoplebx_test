@@ -14,8 +14,8 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.start_time.strftime("%I:%M %p") %></td>
-        <td><%= appointment.end_time.strftime("%I:%M %p") %></td>
+        <td><%= appointment.start_time.strftime("%m/%d/%Y%I:%M %p") %></td>
+        <td><%= appointment.end_time.strftime("%m/%d/%Y%I:%M %p") %></td>
         <td><%= appointment.duration %> minutes</td>
         <td><%= appointment.location %></td>
         <td>

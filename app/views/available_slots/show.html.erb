@@ -1,0 +1,15 @@
+<h1>Available slots for <%= @date.strftime("%B %d, %Y") %></h1>
+
+<table>
+
+  <tbody>
+    <% @available_slots.each do |slot| %>
+      <tr> 
+          <td>
+            <%= link_to_if(slot[:active], slot[:time].strftime("%I:%M%p"), new_appointment_path(time: slot[:time])) %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% console %>

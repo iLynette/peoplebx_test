@@ -1,21 +1,8 @@
 <%= form_with model: @appointment, url: appointments_path, method: :post do |form| %>
+  <%= form.hidden_field :start_time, value: params[:time] %>
   <%= form.label :title %>
   <%= form.text_field :title %>
-
-  <%= form.label :start_time %>
-  <%= form.datetime_field :start_time %>
-
-  <%= form.label :end_time %>
-  <%= form.datetime_field :end_time %>
-
   <%= form.label :location %>
   <%= form.text_field :location %>
-
-  <%= form.label :duration %>
-  <%= form.number_field :duration %>
-
-  <%= form.label :user %>
-  <%= form.collection_select :user_id, User.all, :id, :email %>
-
   <%= form.submit %>
 <% end %>

@@ -1,5 +1,18 @@
 <h1>My Appointments</h1>
 
+
+<p>Your shareable link is <%= "https://#{request.host}/#{current_user.name.parameterize}-peoplebox/#{current_user.appointment_duration}min" %></p>
+
+<p>
+Define  your appointments duration
+
+<%= form_with(url: appointment_duration_path) do |form| %>
+  <%= form.select :duration, options_for_select(Appointment::OPTIONS) %>
+  <%= form.submit %>
+<% end %>
+
+</p>
+
 <table>
   <thead>
     <tr>

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :appointments do
     resources :bookings
-    # get :available_slots, on: :collection
-    # resource :available_slots, only: [:show], controller: :available_slots
   end
 
   get "book/*email", to: "available_slots#show"
@@ -11,7 +9,5 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: "available_slots#show"
-
-  # root to: "appointments#index"
+  root to: "appointments#index"
 end

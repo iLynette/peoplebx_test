@@ -1,36 +1,30 @@
-<h1>My Appointments</h1>
-
-
-<p>Your shareable link is <%= "https://#{request.host}/#{current_user.name.parameterize}-peoplebox/#{current_user.appointment_duration}min" %></p>
-
-<p>
-Define  your appointments duration
-
+<div class="mt-40 mb-10 container mx-auto">
+<h1 class="flex justify-center">My Appointments</h1>
+<div>Your shareable link is<p class="text-orange-500 font-bold"><%= "https://#{request.host}/#{current_user.name.parameterize}-peoplebox/#{current_user.appointment_duration}min" %></p></div>
+<p class="px-4 py-2">
+Define appointment duration, click on save and book an appointment...
 <%= form_with(url: appointment_duration_path) do |form| %>
   <%= form.select :duration, options_for_select(Appointment::OPTIONS) %>
   <%= form.submit %>
 <% end %>
-
 </p>
-
 <table>
   <thead>
     <tr>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Duration</th>
-      <th>Location</th>
-      <th></th>
+      <th class="px-4 py-2">Start Time</th>
+      <th class="px-4 py-2">End Time</th>
+      <th class="px-4 py-2">Duration</th>
+      <th class="px-4 py-2">Location</th>
+      <th class="px-4 py-2"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.start_time.strftime("%m/%d/%Y%I:%M %p") %></td>
-        <td><%= appointment.end_time.strftime("%m/%d/%Y%I:%M %p") %></td>
-        <td><%= appointment.duration %> minutes</td>
-        <td><%= appointment.location %></td>
+      <tr class="hover:bg-gray-100">
+        <td class="px-4 py-2"><%= appointment.start_time.strftime("%m/%d/%Y%I:%M %p") %></td>
+        <td class="px-4 py-2"><%= appointment.end_time.strftime("%m/%d/%Y%I:%M %p") %></td>
+        <td class="px-4 py-2"><%= appointment.duration %> minutes</td>
+        <td class="px-4 py-2"><%= appointment.location %></td>
         <td>
           <%= link_to "Show", appointment %>
           <%= link_to "Edit", edit_appointment_path(appointment) %>
@@ -40,7 +34,5 @@ Define  your appointments duration
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to "New Appointment", new_appointment_path %>
+</div>

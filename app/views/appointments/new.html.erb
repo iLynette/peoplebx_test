@@ -1,8 +1,10 @@
-<%= form_with model: @appointment, url: appointments_path, method: :post do |form| %>
-  <%= form.hidden_field :start_time, value: params[:time] %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-  <%= form.label :location %>
-  <%= form.text_field :location %>
-  <%= form.submit %>
-<% end %>
+<div class="mt-40 mb-10 container mx-auto">
+  <%= form_with model: @appointment, url: appointments_path, method: :post do |form| %>
+    <%= form.hidden_field :start_time, value: params[:time] %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <%= form.label :location %>
+    <%= form.text_field :location, placeholder: "Zoom, Google meets" %>
+    <%= form.submit %>
+  <% end %>
+</div>

@@ -2,14 +2,14 @@
 
 <table>
 
-  <tbody>
-    <% @available_slots.each do |slot| %>
-      <tr> 
-          <td>
-            <%= link_to_if(slot[:active], slot[:time].strftime("%I:%M%p"), new_appointment_path(time: slot[:time])) %>
-          </td>
-      </tr>
-    <% end %>
+  <tbody >
+    <% @available_slots.select { |slot| slot[:time].hour >= 9 && slot[:time].hour <= 17 }.each do |slot| %>
+  <tr class="text-blue-500 cursor-pointer underline active <%= 'inactive' unless slot[:active] %>">
+    <td>
+      <%= link_to_if(slot[:active], slot[:time].strftime("%I:%M%p"), new_appointment_path(time: slot[:time])) %>
+    </td>
+  </tr>
+<% end %>
   </tbody>
 </table>
 <% console %>

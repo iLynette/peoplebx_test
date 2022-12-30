@@ -1,15 +1,25 @@
-<h1>Available slots for <%= @date.strftime("%B %d, %Y") %></h1>
-
-<table>
-
-  <tbody >
-    <% @available_slots.select { |slot| slot[:time].hour >= 9 && slot[:time].hour <= 17 }.each do |slot| %>
-  <tr class="text-blue-500 cursor-pointer underline active <%= 'inactive' unless slot[:active] %>">
-    <td>
-      <%= link_to_if(slot[:active], slot[:time].strftime("%I:%M%p"), new_appointment_path(time: slot[:time])) %>
-    </td>
-  </tr>
-<% end %>
-  </tbody>
-</table>
+<div class="flex justify-center mt-40 mb-10 container mx-auto">
+    <h1>Available slots for <%= @date.strftime("%B %d, %Y") %></h1>
+      </div>
+    <table class="justify-center mt-5 mb-40 container mx-auto">
+      <thead>
+        <tr class="pb-4">
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @available_slots.group_by { |slot| slot[:time].strftime("%Y-%m-%d") }.each do |date, slots| %>
+          <tr class="pb-4">
+            <td><%= date %></td>
+            <td>
+              <% slots.select { |slot| slot[:time].hour >= 9 && slot[:time].hour <= 17 }.each do |slot| %>
+                <%= link_to_if(slot[:active], slot[:time].strftime("%I:%M%p"), new_appointment_path(date: date, time: slot[:time]), class: slot[:active] ? "text-blue-500" : "text-gray-500") %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% console %>

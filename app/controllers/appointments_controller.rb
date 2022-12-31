@@ -1,27 +1,27 @@
+# frozen_string_literal: true
+
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_appointment, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   def index
     @appointments = current_user.appointments
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @appointment = Appointment.new
   end
 
-  def edit
-  end
+  def edit; end
 
-    def available_slots
-      appointment = Appointment.find(params[:appointment_id])
-     
-      @date = Date.parse(params[:date])
-      @appointments = Appointment.where(start_time: @date.beginning_of_day..@date.end_of_day)
-    end
+  def available_slots
+    appointment = Appointment.find(params[:appointment_id])
+
+    @date = Date.parse(params[:date])
+    @appointments = Appointment.where(start_time: @date.beginning_of_day..@date.end_of_day)
+  end
 
   def create
     @appointment = current_user.appointments.build(appointment_params)
@@ -47,14 +47,15 @@ class AppointmentsController < ApplicationController
   end
 
   private
-    def set_appointment
-      @appointment = current_user.appointments.find(params[:id])
-    end
 
-    def appointment_params
-      params.require(:appointment).permit(:start_time, :end_time, :duration, :location, :date).with_defaults(
-        user: current_user,
-        duration: current_user.appointment_duration
-      )
-    end
+  def set_appointment
+    @appointment = current_user.appointments.find(params[:id])
+  end
+
+  def appointment_params
+    params.require(:appointment).permit(:start_time, :end_time, :duration, :location, :date).with_defaults(
+      user: current_user,
+      duration: current_user.appointment_duration
+    )
+  end
 end

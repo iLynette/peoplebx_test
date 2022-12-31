@@ -1,5 +1,6 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
 
+class User < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :bookings, through: :appointments
   has_one :profile, dependent: :destroy

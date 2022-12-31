@@ -12,7 +12,6 @@ Define your appointment duration, click on duration button, select a time and cr
   <thead>
     <tr>
       <th class="px-4 py-2">Start Time</th>
-      <th class="px-4 py-2">End Time</th>
       <th class="px-4 py-2">Duration</th>
       <th class="px-4 py-2">Location</th>
       <th class="px-4 py-2"></th>
@@ -22,7 +21,6 @@ Define your appointment duration, click on duration button, select a time and cr
     <% @appointments.each do |appointment| %>
       <tr class="hover:bg-gray-100">
         <td class="px-4 py-2"><%= appointment.start_time.strftime("%m/%d/%Y%I:%M %p") %></td>
-        <td class="px-4 py-2"><%= appointment.end_time.strftime("%m/%d/%Y%I:%M %p") %></td>
         <td class="px-4 py-2"><%= appointment.duration %> minutes</td>
         <td class="px-4 py-2"><%= appointment.location %></td>
         <td class="flex gap-x-2 py-2 text-orange-500">

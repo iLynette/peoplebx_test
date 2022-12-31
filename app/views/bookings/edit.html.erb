@@ -2,9 +2,6 @@
   <%= form.label :start_time %>
   <%= form.datetime_select :start_time %>
 
-  <%= form.label :end_time %>
-  <%= form.datetime_select :end_time %>
-
   <%= form.label :appointment %>
   <%= form.collection_select :appointment_id, Appointment.all, :id, :title %>
 

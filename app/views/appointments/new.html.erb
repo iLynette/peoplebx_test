@@ -1,10 +1,16 @@
-<div class="mt-40 mb-10 container mx-auto">
+<div class="flex flex-col mt-40 mb-10 container mx-auto">
   <%= form_with model: @appointment, url: appointments_path, method: :post do |form| %>
     <%= form.hidden_field :start_time, value: params[:time] %>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-    <%= form.label :location %>
-    <%= form.text_field :location, placeholder: "Zoom, Google meets" %>
-    <%= form.submit %>
+    <div class="mb-5">
+      <%= form.label :title %>
+      </br>
+      <%= form.text_field :title, class: "w-1/6" %>
+    </div>
+    <div class="mb-5">
+      <%= form.label :location %>
+      </br>
+      <%= form.text_field :location, placeholder: "Zoom, Google meets", class: "w-1/6"%>
+    </div>
+    <%= form.submit "Create Appointments", class: 'py-3 w-1/6 bg-orange-500 text-white hover:bg-orange-600 cursor-pointer'%>
   <% end %>
 </div>

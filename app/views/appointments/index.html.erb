@@ -1,11 +1,11 @@
 <div class="mt-40 mb-10 container mx-auto">
-<h1 class="flex justify-center">My Appointments</h1>
-<div>Your shareable link is<p class="text-orange-500 font-bold"><%= "https://#{request.host}/#{current_user.name.parameterize}-peoplebox/#{current_user.appointment_duration}min" %></p></div>
+<h1 class="flex justify-center text-2xl text-orange-500 font-bold">My Appointments</h1>
+<div>Your link(not clickable) is<p class="text-orange-500 font-bold"><%= "https://#{request.host}/#{current_user.name.parameterize}-peoplebox/#{current_user.appointment_duration}min" %></p></div>
 <p class="px-4 py-2">
-Define appointment duration, click on save and book an appointment...
+Define appointment duration, click on duration button, select a time and create an appointment...
 <%= form_with(url: appointment_duration_path) do |form| %>
   <%= form.select :duration, options_for_select(Appointment::OPTIONS) %>
-  <%= form.submit %>
+  <%= form.submit "Duration", class: 'py-3 w-1/12 bg-orange-500 text-white hover:bg-orange-600 cursor-pointer'%>
 <% end %>
 </p>
 <table>
@@ -27,8 +27,7 @@ Define appointment duration, click on save and book an appointment...
         <td class="px-4 py-2"><%= appointment.location %></td>
         <td>
           <%= link_to "Show", appointment %>
-          <%= link_to "Edit", edit_appointment_path(appointment) %>
-          <%= link_to "Delete", appointment, method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= button_to "Delete", appointment, method: :delete, data: { confirm: "Are you sure?" } %>
         </td>
       </tr>
     <% end %>

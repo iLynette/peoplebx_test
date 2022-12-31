@@ -9,6 +9,7 @@ class Appointment < ApplicationRecord
     "90": 90
   }.freeze
 
+  has_many :bookings, dependent: :destroy
   belongs_to :user
   validates :start_time, presence: true
   validates :end_time, presence: true

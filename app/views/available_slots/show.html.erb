@@ -13,8 +13,8 @@
           <tr class="pb-4">
             <td><%= date %></td>
             <td>
-              <% slots.select { |slot| slot[:time].hour >= 9 && slot[:time].hour <= 17 }.each do |slot| %>
-                <%= link_to_if(slot[:active], slot[:time].strftime("%I:%M%p"), new_appointment_path(date: date, time: slot[:time]), class: slot[:active] ? "text-blue-500" : "text-gray-500") %>
+              <% slots.select { |slot| slot[:time].hour >= 9 && slot[:time].hour <= 16 }.each do |slot| %>
+                <%= link_to_if(slot[:active], slot[:time].strftime("%I:%M%p"), new_appointment_path(date: date, time: slot[:time]), class: "bg-blue-500 px-2 hover:bg-blue-700 text-white font-500 rounded #{'text-gray-500' unless slot[:active]}", style: "margin-right: 0.5em") %>
               <% end %>
             </td>
           </tr>

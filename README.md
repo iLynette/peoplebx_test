@@ -1,6 +1,6 @@
 # Calendlyy
 
-> On this test, a user is able to sign up, choose their availability and  book appointments and get a shareable url.
+> On this test, a user is able to sign up, choose their availability and  book appointments and get a url depending on appointment's duration. Once a time is picked, it becomes inactive(grey)and can't be reselected.
 
 
 ## Built With
@@ -9,6 +9,9 @@
 - Ruby on Rails
 - PostgreSQL
 - TailwindCSS
+
+[Live Link](https://peoplebxtest-production.up.railway.app/users/sign_up)
+
 
 ## Getting Started
 

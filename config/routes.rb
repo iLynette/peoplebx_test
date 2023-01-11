@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :appointments do
     resources :bookings
   end
-  
+
   namespace :api, defaults: { format: 'json' } do
     resources :appointments do
       resources :bookings

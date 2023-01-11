@@ -13,6 +13,8 @@
 [Live Link](https://peoplebxtest-production.up.railway.app/users/sign_up)
 
 
+[Loom video](https://www.loom.com/share/5717fcda5fac4b7083052d6010e20821)
+
 ## Getting Started
 
 - [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your local machine 
@@ -39,7 +41,7 @@
   
 ## After installing bundle
 
-Please run the following commands `rails db:create` `rails db:migrate` `rails s`
+Please run the following commands `rails db:create` `rails db:migrate` `rails db:seed` `rails s`
 
 
 ### To track linter errors locally follow these steps:  

@@ -16,7 +16,7 @@ class Appointment < ApplicationRecord
   validates :location, presence: true
 
   before_validation do
-    self.end_time = start_time + 1.hour
+    self.end_time = start_time + duration.minutes
   end
 
   def self.slots(user)

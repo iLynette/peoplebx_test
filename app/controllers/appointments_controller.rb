@@ -16,13 +16,6 @@ class AppointmentsController < ApplicationController
 
   def edit; end
 
-  def available_slots
-    appointment = Appointment.find(params[:appointment_id])
-
-    @date = Date.parse(params[:date])
-    @appointments = Appointment.where(start_time: @date.beginning_of_day..@date.end_of_day)
-  end
-
   def create
     @appointment = current_user.appointments.build(appointment_params)
 
